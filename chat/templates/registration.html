@@ -1,0 +1,11 @@
+<!DOCTYPE html>
+<html lang="ru">
+  {% load static %}
+  <meta charset="UTF-8">
+  <title>Регистрация</title>
+  <h1>Создание аккаунта</h1>
+<form action="" method="post" class="register">
+    {% csrf_token %}
+    <label class="input">{{ user_form.as_p }}</label>
+    <button>Регистраия</button>
+</form>

@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% block title %} {{ dialog.dialog_theme }} {% endblock %}
+{% block content %}
+	<h1>{{ dialog.dialog_theme }}</h1>
+	{% if user.is_authenticated %}
+    <p>Ваше имя: {{ user.username }}</p>
+	{% for last_message in message %}
+		<p>имя пользователя: {{ last_message.author_name }}</p>
+		<p>Сообщение отправленое пользователем: {{ last_message.message_txt }}</p>
+		{% endfor %}
+{% endif %}
+	<hr></hr>
+	<form action = "{% url 'dialogs:nm' dialog.id %}" method = "POST">
+		{% csrf_token %}
+		<input type = "text" required placeholder = "Your name" name = "name">
+		<br> <textarea name = "text" placeholder = "Your message" cols = "35" rows = "13"> </textarea>
+		<br> <button type = "submit">Отправить сообщение</button>
+	</form>
+	<body>
+		<a href = "/dialogs"> Назад </a>
+	</body>
+{% endblock %}

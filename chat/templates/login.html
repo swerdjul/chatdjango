@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="ru">
+  {% load static %}
+  <meta charset="UTF-8" />
+  <title>Логин</title>
+<form action="" method="post" class="login">
+      {% csrf_token %}
+      <label class="input">{{ login.as_p }}</label>
+    {% if messages %}
+    <ul class="messages">
+        {% for message in messages %}
+            <li class="{{ message.tags }}">
+                {{ message|safe }}
+            </li>
+        {% endfor %}
+    </ul>
+{% endif %}
+  <button type="submit">Войти</button>
+</form>
+  <span>Не зарегестрированы?</span>
+  <a href="http://127.0.0.1:8000/register/">Регистрация </a>
+
